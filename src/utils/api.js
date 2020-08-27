@@ -4,8 +4,7 @@ import { BE_URL, LOGIN_URL } from "./constant";
 import authService from "../services/auth.service";
 
 const api_instance = axios.create({
-  baseURL: BE_URL,
-  timeout: 600000,
+  baseURL: BE_URL
 });
 
 api_instance.interceptors.request.use(

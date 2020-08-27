@@ -3,10 +3,8 @@
         window.__env = window.__env || {};
 
         window.__env.beUrl = `http://${window.location.hostname}:9001`;
-        window.__env.feUrl = `http://${window.location.hostname}:9002`;
+        window.__env.feUrl = `http://${window.location.hostname}:9000`;
         window.__env.enableDebug = true;
-        window.__env.feSubUrl = ``;
-        window.__env.beSubUrl = `/api`;
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
             {
