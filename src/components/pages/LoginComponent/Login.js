@@ -1,10 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import { Button, Form } from "react-bootstrap";
-
-import { LOGIN_URL } from "../../../utils/constant";
-import styles from "./Login.module.css";
 import authService from "../../../services/auth.service";
+import { LOGIN_URL } from "../../../utils/constant";
 import { log } from "../../../utils/util";
+import styles from "./Login.module.css";
 
 class Login extends React.Component {
   constructor(props) {
@@ -13,6 +13,7 @@ class Login extends React.Component {
       username: "trinhvutung87@gmail.com",
       password: "123456",
       isValidDate: true,
+      isSubmitting: false
     };
   }
 
@@ -34,6 +35,7 @@ class Login extends React.Component {
 
   handleSubmitInput(event) {
     event.preventDefault();
+    this.updateState("isSubmitting", true);
     const body = {
       email: this.state.username,
       password: this.state.password,
@@ -43,6 +45,7 @@ class Login extends React.Component {
       .login(LOGIN_URL, body)
       .then((response) => {
         if (response.status === 200) {
+          this.updateState("isSubmitting", false);
           log("response.data", response.data);
           authService.setAccessToken(response.data.token);
           this.props.history.push("/home");
@@ -50,6 +53,7 @@ class Login extends React.Component {
       })
       .catch((err) => {
         console.log(err);
+        this.updateState("isSubmitting", false);
       });
   }
 
@@ -87,6 +91,7 @@ class Login extends React.Component {
             </Form.Group>
             <Button variant="primary" type="submit">
               Login
+              {this.state.isSubmitting ? <FontAwesomeIcon className="ml-2" icon="spinner" pulse /> : null}
             </Button>
           </Form>
         </div>
