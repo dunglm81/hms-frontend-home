@@ -1,7 +1,7 @@
 export const ENVIRONMENT = () => {
   let env = {
     beUrl: `http://localhost:9001`,
-    enableDebug: true,
+    enableDebug: false,
     appArr: [],
     refreshTokenTime: 5,
   };

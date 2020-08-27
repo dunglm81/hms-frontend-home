@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faDownload, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faDownload, faEdit, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
@@ -15,7 +15,7 @@ import Login from "./components/pages/LoginComponent/Login";
 import PrivateRoute from "./utils/PrivateRoute";
 import authService from "./services/auth.service";
 
-library.add(faEdit, faDownload, faCheck);
+library.add(faEdit, faDownload, faCheck, faSignOutAlt);
 
 class App extends Component {
   constructor(props) {
