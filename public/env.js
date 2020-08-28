@@ -1,9 +1,6 @@
 (function (window) {
     if (window) {
         window.__env = window.__env || {};
-
-        window.__env.beUrl = `http://${window.location.hostname}:9001`;
-        window.__env.feUrl = `http://${window.location.hostname}:9000`;
         window.__env.enableDebug = false;
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
@@ -12,7 +9,8 @@
                 name: `hoteluser`,
                 nameAlt: `Booking`,
                 display: false,
-                feUrl: `${window.__env.feUrl}/booking`,
+                subDomain:"frontend_booking",
+                feUrl: '',
                 bgImgUrl: "/booking.png"
             },
             {
@@ -20,7 +18,8 @@
                 name: `posuser`,
                 nameAlt: `POS`,
                 display: false,
-                feUrl: `${window.__env.feUrl}/pos`,
+                subDomain:"frontend_pos",
+                feUrl: '',
                 bgImgUrl: "/pos.png"
             }
         ];
