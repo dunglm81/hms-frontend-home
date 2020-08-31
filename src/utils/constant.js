@@ -1,6 +1,8 @@
 export const ENVIRONMENT = () => {
   let env = {
     enableDebug: false,
+    beUrl: `http://localhost:7001`,
+    baseDomain: `http://localhost:7000`,
     appArr: [],
     refreshTokenTime: 5,
   };
@@ -15,16 +17,14 @@ export const ENVIRONMENT = () => {
   }
 
   env.appArr.map(item => {
-    item.feUrl = `${process.env.REACT_APP_BASE_DOMAIN}/${item.subDomain}`;
+    item.feUrl = `${item.baseDomain}/${item.subDomain}`;
     return item;
   });
 
   return env;
 };
 
-/* --------- Secrets --------- */
-export const BE_URL = process.env.REACT_APP_BACKEND_USER_ADMINSTRATION;
-/* --------------------------- */
+export const BE_URL = ENVIRONMENT().beUrl;
 
 export const LOGIN_URL = `authentication/user_login`;
 export const REFRESH_TOKEN_URL = `authentication/renew_jwt`;
