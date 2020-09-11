@@ -1,29 +1,39 @@
 (function (window) {
     if (window) {
         window.__env = window.__env || {};
-        window.__env.beUrl = `http://localhost:9001`;
-        window.__env.baseDomain = `http://localhost:9000`;
+        window.__env.beUrl = `http://localhost/user-authentication`;
+        window.__env.baseDomain = `http://localhost`;
         window.__env.enableDebug = false;
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
             {
+                id: 1,
+                name: `Admin`,
+                nameAlt: `User Administration`,
+                display: false,
+                subDomain:"user-administration",
+                feUrl: '',
+                bgImgUrl: "/pos.png"
+            },            
+            {
                 id: 6,
-                name: `hoteluser`,
+                name: `booking`,
                 nameAlt: `Booking`,
                 display: false,
-                subDomain:"frontend_booking",
+                subDomain:"booking",
                 feUrl: '',
                 bgImgUrl: "/booking.png"
             },
             {
                 id: 7,
-                name: `posuser`,
+                name: `pos`,
                 nameAlt: `POS`,
                 display: false,
-                subDomain:"frontend_pos",
+                subDomain:"pos",
                 feUrl: '',
                 bgImgUrl: "/pos.png"
             }
+
         ];
     }
 }(this));

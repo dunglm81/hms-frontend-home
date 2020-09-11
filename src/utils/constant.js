@@ -2,7 +2,7 @@ export const ENVIRONMENT = () => {
   let env = {
     enableDebug: false,
     beUrl: `http://localhost:7001`,
-    baseDomain: `http://localhost:7000`,
+    baseDomain: `http://localhost`,
     appArr: [],
     refreshTokenTime: 5,
   };
@@ -17,7 +17,7 @@ export const ENVIRONMENT = () => {
   }
 
   env.appArr.map(item => {
-    item.feUrl = `${item.baseDomain}/${item.subDomain}`;
+    item.feUrl = `${env.baseDomain}/${item.subDomain}`;
     return item;
   });
 
