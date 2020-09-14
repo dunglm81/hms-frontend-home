@@ -3,8 +3,10 @@ import Base64 from "../utils/Base64";
 import {
   HMS_ACCESS_TOKEN,
   HMS_EXPIRE, HMS_USER,
-  REFRESH_TOKEN_URL
+
+  HMS_USER_LOGO, REFRESH_TOKEN_URL
 } from "../utils/constant";
+import { logFn } from "../utils/util";
 
 class AuthService {
   getAccessToken() {
@@ -23,15 +25,25 @@ class AuthService {
     if (token) {
       const payload = token.split(".")[1];
       const userStr = this.convertStr(Base64.decode(payload).toString());
+      logFn("userStr", userStr);
       const userStrArr = userStr.split(",");
       const idx = userStrArr.findIndex((item) => item.includes('"exp":'));
       if (idx !== -1) {
-        console.log("TVT expire = " + userStrArr[idx].split(":")[1]);
         localStorage.setItem(HMS_EXPIRE, userStrArr[idx].split(":")[1]);
         localStorage.setItem(HMS_ACCESS_TOKEN, token);
         localStorage.setItem(HMS_USER, userStr);
       }
     }
+  }
+
+  setUserLogo(logo) {
+    if (logo) {
+      localStorage.setItem(HMS_USER_LOGO, logo);
+    }
+  }
+
+  getUserLogo() {
+    return localStorage.getItem(HMS_USER_LOGO);
   }
 
   convertStr(string) {
@@ -104,6 +116,7 @@ class AuthService {
     localStorage.removeItem(HMS_ACCESS_TOKEN);
     localStorage.removeItem(HMS_USER);
     localStorage.removeItem(HMS_EXPIRE);
+    localStorage.removeItem(HMS_USER_LOGO);
     window.location.href = `/login`;
   }
 }

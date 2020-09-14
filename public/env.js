@@ -2,8 +2,9 @@
     if (window) {
         window.__env = window.__env || {};
         window.__env.beUrl = `http://localhost/user-authentication`;
+        // window.__env.beUrl = `http://localhost:1080`;
         window.__env.baseDomain = `http://localhost`;
-        window.__env.enableDebug = false;
+        window.__env.enableDebug = true;
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
             {
@@ -16,7 +17,7 @@
                 bgImgUrl: "/pos.png"
             },            
             {
-                id: 6,
+                id: 2,
                 name: `booking`,
                 nameAlt: `Booking`,
                 display: false,
@@ -25,7 +26,7 @@
                 bgImgUrl: "/booking.png"
             },
             {
-                id: 7,
+                id: 3,
                 name: `pos`,
                 nameAlt: `POS`,
                 display: false,

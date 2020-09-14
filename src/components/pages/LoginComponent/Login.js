@@ -3,7 +3,7 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import authService from "../../../services/auth.service";
 import { LOGIN_URL } from "../../../utils/constant";
-import { log } from "../../../utils/util";
+import { logFn } from "../../../utils/util";
 import styles from "./Login.module.css";
 
 class Login extends React.Component {
@@ -46,8 +46,9 @@ class Login extends React.Component {
       .then((response) => {
         if (response.status === 200) {
           this.updateState("isSubmitting", false);
-          log("response.data", response.data);
+          logFn("response.data", response.data);
           authService.setAccessToken(response.data.token);
+          authService.setUserLogo(response.data.logo);
           this.props.history.push("/home");
         }
       })

@@ -33,3 +33,6 @@ export const REFRESH_TOKEN_TIME = ENVIRONMENT().refreshTokenTime;
 export const HMS_ACCESS_TOKEN = `hms-access-token`;
 export const HMS_USER = `hms-user`;
 export const HMS_EXPIRE = `hms-expire`;
+export const HMS_USER_LOGO = `hms-user-logo`;
+
+export const API_GET_ORGS = `api/v1/orgs`;
