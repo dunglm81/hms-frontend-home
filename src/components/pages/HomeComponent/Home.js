@@ -13,29 +13,33 @@ class Home extends React.Component {
       appArr: ENVIRONMENT().appArr,
       user: authService.getUser(),
       userLogo: authService.getUserLogo(),
-      orgInfo: {}
+      org: authService.getOrg()
     };
   }
 
   componentDidMount() {
     if (this.state.user) {
-      this.getDataFromServer().then(() => {
+      if (this.state.org) {
         this.setupAppArr();
-      })
+      } else {
+        this.getOrgFromServer(this.state.user.orgId).then(() => {
+          this.setupAppArr();
+        })
+      }
     } else {
       this.props.history.push("/login");
     }
   }
 
-  getDataFromServer() {
+  getOrgFromServer(orgId) {
     return new Promise((resolve, reject) => {
-      const orgId = this.state.user.orgId;
       if (orgId) {
         apiService.getOrgInfo(orgId).then((response) => {
           if (response.status === 200 && response.data) {
             this.setState({
-              orgInfo: response.data
+              org: response.data
             })
+            authService.setOrg(response.data);
             resolve();
           } else {
             reject();
@@ -52,7 +56,7 @@ class Home extends React.Component {
     const userRoles = authService.getUser().role;
     let appArr = JSON.parse(JSON.stringify(this.state.appArr));
     appArr = appArr.map((item) => {
-      item.name = `${this.state.orgInfo.code}-${item.name}`;
+      item.name = `${this.state.org.code}-${item.name}`;
       item.display = userRoles.some(item1 => {
         const regex = new RegExp("^" + item.name);
         return regex.test(item1);
@@ -75,7 +79,7 @@ class Home extends React.Component {
       };
     };
     return (
-      <div className={styles.homeCustom}>
+      <div className={styles.homeCustom} >
         <div className={styles.navbarCustom}>
           <div className={styles.navbarInfo}>
             <div className={styles.navbarAvartar}>
@@ -94,10 +98,10 @@ class Home extends React.Component {
         </div>
         <div className={styles.orgContainer}>
           <div className={styles.orgLogoContainer}>
-            <img src={this.state.orgInfo.logo || ''} alt="" />
+            {this.state.org ? <img src={this.state.org.logo} alt="" /> : null}
           </div>
           <div className={styles.orgTitleContainer}>
-            Hệ thống quản lý khách sạn {this.state.orgInfo.name}
+            Hệ thống quản lý khách sạn {(this.state.org ? this.state.org.name : null)}
           </div>
         </div>
         <div className={styles.homeContainer + " container"}>

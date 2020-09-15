@@ -34,5 +34,7 @@ export const HMS_ACCESS_TOKEN = `hms-access-token`;
 export const HMS_USER = `hms-user`;
 export const HMS_EXPIRE = `hms-expire`;
 export const HMS_USER_LOGO = `hms-user-logo`;
+export const HMS_ORG = `hms-org`;
+export const HMS_ORG_CODE = `hms-org-code`;
 
 export const API_GET_ORGS = `api/v1/orgs`;

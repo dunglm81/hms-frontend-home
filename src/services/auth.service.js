@@ -2,8 +2,9 @@ import api_instance from "../utils/api";
 import Base64 from "../utils/Base64";
 import {
   HMS_ACCESS_TOKEN,
-  HMS_EXPIRE, HMS_USER,
-
+  HMS_EXPIRE,
+  HMS_ORG,
+  HMS_ORG_CODE, HMS_USER,
   HMS_USER_LOGO, REFRESH_TOKEN_URL
 } from "../utils/constant";
 import { logFn } from "../utils/util";
@@ -83,6 +84,31 @@ class AuthService {
     return user;
   }
 
+  setOrg(org) {
+    if (typeof org === 'object') {
+      if (org.code) {
+        localStorage.setItem(HMS_ORG_CODE, org.code)
+      }
+      org = JSON.stringify(org);
+      localStorage.setItem(HMS_ORG, org);
+    }
+  }
+
+  getOrg() {
+    let org = null;
+    let orgStr = localStorage.getItem(HMS_ORG);
+    try {
+      org = JSON.parse(orgStr);
+    } catch (error) {
+      if (error instanceof SyntaxError) {
+        this.printError(error, true);
+      } else {
+        this.printError(error, false);
+      }
+    }
+    return org;
+  }
+
   isExpire() {
     const expire = this.getExpire();
     const now = new Date().getTime();
@@ -117,6 +143,7 @@ class AuthService {
     localStorage.removeItem(HMS_USER);
     localStorage.removeItem(HMS_EXPIRE);
     localStorage.removeItem(HMS_USER_LOGO);
+    localStorage.removeItem(HMS_ORG);
     window.location.href = `/login`;
   }
 }
