@@ -57,10 +57,14 @@ class Home extends React.Component {
     let appArr = JSON.parse(JSON.stringify(this.state.appArr));
     appArr = appArr.map((item) => {
       item.name = `${this.state.org.code}-${item.name}`;
-      item.display = userRoles.some(item1 => {
-        const regex = new RegExp("^" + item.name);
-        return regex.test(item1);
-      });
+      const regex = new RegExp("^" + item.name);
+      if (typeof userRoles === 'string') {
+        item.display = regex.test(userRoles);
+      } else {
+        item.display = userRoles.some(item1 => {
+          return regex.test(item1);
+        });
+      }
       return item;
     });
     this.setState({
