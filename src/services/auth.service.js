@@ -86,12 +86,19 @@ class AuthService {
 
   setOrg(org) {
     if (typeof org === 'object') {
-      if (org.code) {
-        localStorage.setItem(HMS_ORG_CODE, org.code)
-      }
       org = JSON.stringify(org);
       localStorage.setItem(HMS_ORG, org);
     }
+  }
+
+  setOrgCode(orgCode) {
+    if(orgCode) {
+      localStorage.setItem(HMS_ORG_CODE, orgCode);
+    }
+  }
+
+  getOrgCode() {
+    return localStorage.getItem(HMS_ORG_CODE);
   }
 
   getOrg() {
@@ -144,6 +151,7 @@ class AuthService {
     localStorage.removeItem(HMS_EXPIRE);
     localStorage.removeItem(HMS_USER_LOGO);
     localStorage.removeItem(HMS_ORG);
+    localStorage.removeItem(HMS_ORG_CODE);
     window.location.href = `/login`;
   }
 }
