@@ -13,7 +13,7 @@
                 display: false,
                 subDomain:"user-administration",
                 feUrl: '',
-                bgImgUrl: "/pos.png"
+                bgImgUrl: "/admin.png"
             },            
             {
                 id: 2,

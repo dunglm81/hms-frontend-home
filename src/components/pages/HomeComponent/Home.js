@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import apiService from '../../../services/api.service';
 import authService from "../../../services/auth.service";
-import { ENVIRONMENT } from "../../../utils/constant";
+import { ADMIN, ENVIRONMENT } from "../../../utils/constant";
 import styles from "./Home.module.css";
 
 
@@ -24,6 +24,8 @@ class Home extends React.Component {
       } else {
         this.getOrgFromServer(this.state.user.orgId).then(() => {
           this.setupAppArr();
+        }).catch(e => {
+          console.log(e);
         })
       }
     } else {
@@ -33,7 +35,7 @@ class Home extends React.Component {
 
   getOrgFromServer(orgId) {
     return new Promise((resolve, reject) => {
-      if (orgId) {
+      if (orgId && parseInt(orgId) !== -1) {
         apiService.getOrgInfo(orgId).then((response) => {
           if (response.status === 200 && response.data) {
             this.setState({
@@ -49,6 +51,7 @@ class Home extends React.Component {
           reject();
         })
       }
+      resolve();
     })
   }
 
@@ -56,7 +59,9 @@ class Home extends React.Component {
     const userRoles = authService.getUser().role;
     let appArr = JSON.parse(JSON.stringify(this.state.appArr));
     appArr = appArr.map((item) => {
-      item.name = `${this.state.org.code}-${item.name}`;
+      if (item.name !== ADMIN && this.state.org) {
+        item.name = `${this.state.org.code}-${item.name}`;
+      }
       const regex = new RegExp("^" + item.name);
       if (typeof userRoles === 'string') {
         item.display = regex.test(userRoles);
@@ -105,7 +110,7 @@ class Home extends React.Component {
             {this.state.org ? <img src={this.state.org.logo} alt="" /> : null}
           </div>
           <div className={styles.orgTitleContainer}>
-            Hệ thống quản lý khách sạn {(this.state.org ? this.state.org.name : null)}
+            {(this.state.org ? `Hệ thống quản lý khách sạn ${this.state.org.name}` : null)}
           </div>
         </div>
         <div className={styles.homeContainer + " container"}>
