@@ -5,7 +5,7 @@ import {
   HMS_EXPIRE,
   HMS_ORG,
   HMS_ORG_CODE, HMS_USER,
-  HMS_USER_LOGO, REFRESH_TOKEN_URL
+  HMS_USER_LOGO, REFRESH_TOKEN_URL, REFRESH_TOKEN_TIME
 } from "../utils/constant";
 import { logFn } from "../utils/util";
 
@@ -118,7 +118,7 @@ class AuthService {
   isRefresh() {
     const expire = this.getExpire();
     const now = new Date().getTime();
-    return expire ? now > parseInt(expire) * 1000 - 300000 : false;
+    return expire ? now > parseInt(expire) * 1000 - REFRESH_TOKEN_TIME * 60000 : false;
   }
 
   getRefreshToken() {

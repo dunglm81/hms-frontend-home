@@ -2,7 +2,6 @@
     if (window) {
         window.__env = window.__env || {};
         window.__env.beUrl = `http://localhost/user-authentication`;
-        // window.__env.beUrl = `http://localhost:1080`;
         window.__env.baseDomain = `http://localhost`;
         window.__env.enableDebug = true;
         window.__env.refreshTokenTime = 5; //minutes
