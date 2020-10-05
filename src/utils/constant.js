@@ -38,4 +38,4 @@ export const HMS_USER_LOGO = `hms-user-logo`;
 export const HMS_ORG = `hms-org`;
 export const HMS_ORG_CODE = `hms-org-code`;
 
-export const API_GET_ORGS = `api/v1/orgs`;
+export const API_ORG = `/org`;
