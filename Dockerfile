@@ -5,8 +5,8 @@ COPY package*.json /app/
 RUN npm install
 COPY ./ /app/
 
-COPY ./env.js /app/public/
-COPY ./constant.js /app/src/utils/
+COPY ./env.js ./public/
+COPY ./constant.js ./src/utils/
 
 RUN npm run build
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
