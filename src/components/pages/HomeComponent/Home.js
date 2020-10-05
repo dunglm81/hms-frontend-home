@@ -63,7 +63,7 @@ class Home extends React.Component {
     let appArr = JSON.parse(JSON.stringify(this.state.appArr));
     appArr = appArr.map((item) => {
       if (item.name !== ADMIN && orgCode) {
-        item.name = `${orgCode}-${item.name}`;
+        item.name = `${orgCode}_${item.name}`;
       }
       const regex = new RegExp("^" + item.name);
       if (typeof userRoles === 'string') {

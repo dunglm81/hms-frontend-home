@@ -1,9 +1,9 @@
 import api_instance from "../utils/api";
-import { API_GET_ORGS } from "../utils/constant";
+import { API_ORG } from "../utils/constant";
 
 class ApiService {
     getOrgInfo(orgId) {
-        return api_instance.get(`${API_GET_ORGS}/${orgId}`);
+        return api_instance.get(`${API_ORG}/${orgId}`);
     }
 }
 

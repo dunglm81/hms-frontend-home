@@ -47,7 +47,7 @@ class Login extends React.Component {
         if (response.status === 200) {
           this.updateState("isSubmitting", false);
           authService.setAccessToken(response.data.token);
-          authService.setUserLogo(response.data.logo);
+          authService.setUserLogo(response.data.avartar);
           this.props.history.push("/home");
         }
       })
