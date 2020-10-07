@@ -5,7 +5,7 @@ COPY package*.json /app/
 RUN npm install
 COPY ./ /app/
 
-COPY ./env.js ./public/
+#COPY ./env.js ./public/
 
 RUN npm run build
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
