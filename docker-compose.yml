@@ -2,7 +2,8 @@ version: "2"
 services:
   home:
     restart: always
-    build: .
+    build: 
+        contect: .
         args:
           SERVER_IP= ${SERVER_IP}
     ports:
