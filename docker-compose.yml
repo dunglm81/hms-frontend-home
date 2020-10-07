@@ -3,7 +3,7 @@ services:
   home:
     restart: always
     build: 
-        contect: .
+        context: .
         args:
           - SERVER_IP= ${SERVER_IP}
     ports:
