@@ -1,8 +1,8 @@
 (function (window) {
     if (window) {
         window.__env = window.__env || {};
-        window.__env.beUrl = 'http://' + process.env.REACT_APP_SERVER_IP + '/backend-admin';
-        window.__env.baseDomain = 'http://' + process.env.REACT_APP_SERVER_IP;
+        window.__env.beUrl = `http://localhost/backend-admin`;
+        window.__env.baseDomain = `http://localhost`;
         window.__env.enableDebug = true;
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
