@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "8012:80"
+    environment:
+      - REACT_APP_SERVER_IP=54.255.201.103
     networks:
       - backend_network
 networks:
