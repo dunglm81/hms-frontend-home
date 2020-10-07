@@ -17,14 +17,15 @@ export const ENVIRONMENT = () => {
   }
 
   env.appArr.map(item => {
-    item.feUrl = `${env.baseDomain}/${item.subDomain}`;
+    item.feUrl = `http://${process.env.REACT_APP_SERVER_IP}/${item.subDomain}`;
     return item;
   });
 
   return env;
 };
 
-export const BE_URL = ENVIRONMENT().beUrl;
+// export const BE_URL = ENVIRONMENT().beUrl;
+export const BE_URL = `http://${process.env.REACT_APP_SERVER_IP}/backend-admin`;
 
 export const LOGIN_URL = `authentication/user_login`;
 export const REFRESH_TOKEN_URL = `authentication/renew_jwt`;
