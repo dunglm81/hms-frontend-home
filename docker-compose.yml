@@ -3,10 +3,10 @@ services:
   home:
     restart: always
     build: .
+        args:
+        SERVER_IP= ${SERVER_IP}
     ports:
       - "8012:80"
-    args:
-        SERVER_IP= ${SERVER_IP}
     networks:
       - backend_network
 networks:
