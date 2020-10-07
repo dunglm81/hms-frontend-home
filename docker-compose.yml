@@ -5,7 +5,7 @@ services:
     build: 
         context: .
         args:
-          - SERVER_IP= ${SERVER_IP}
+          - SERVER_IP=${SERVER_IP}
     ports:
       - "8012:80"
     networks:
