@@ -11,7 +11,7 @@
                 name: `Admin`,
                 nameAlt: `User Administration`,
                 display: false,
-                subDomain:"user-administration",
+                subDomain:"admin",
                 feUrl: '',
                 bgImgUrl: "/admin.png"
             },            
