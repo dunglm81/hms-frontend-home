@@ -92,42 +92,45 @@ class Home extends React.Component {
     };
     return (
       <div className={styles.homeCustom} >
-        <div className={styles.navbarCustom}>
-          <div className={styles.navbarInfo}>
-            <div className={styles.navbarAvartar}>
-              <img src={this.state.userLogo} alt="avartar"></img>
+        <div className={"h-100 " + styles.containerCustom}>
+          <div className={styles.navbarCustom}>
+            <div className={styles.navbarInfo}>
+              <div className={styles.navbarAvartar}>
+                <img src={this.state.userLogo} alt="avartar"></img>
+              </div>
+              <div className={styles.navbarName}>
+                {this.state.user.unique_name}
+              </div>
             </div>
-            <div className={styles.navbarName}>
-              {this.state.user.unique_name}
+            <div className={styles.navbarBtn} onClick={() => {
+              this.handleLogoutEvent();
+            }}>
+              <div><FontAwesomeIcon icon="sign-out-alt" /></div>
+              <div>Log out</div>
             </div>
           </div>
-          <div className={styles.navbarBtn} onClick={() => {
-            this.handleLogoutEvent();
-          }}>
-            <div><FontAwesomeIcon icon="sign-out-alt" /></div>
-            <div>Log out</div>
+          <div className={styles.orgContainer}>
+            <div className={styles.orgLogoContainer}>
+              {this.state.org ? <img src={this.state.org.logo} alt="" /> : null}
+            </div>
+            <div className={styles.orgTitleContainer}>
+              {(this.state.org ? `Hệ thống quản lý khách sạn ${this.state.org.name}` : null)}
+            </div>
+          </div>
+          <div className={styles.homeContainer + " container-fluid"}>
+            {this.state.appArr.map((item, index) => {
+              return (
+                item.display && (
+                  <a href={item.feUrl} key={index}>
+                    <div style={setStyle(item.bgImgUrl)}></div>
+                    <div>{item.nameAlt}</div>
+                  </a>
+                )
+              );
+            })}
           </div>
         </div>
-        <div className={styles.orgContainer}>
-          <div className={styles.orgLogoContainer}>
-            {this.state.org ? <img src={this.state.org.logo} alt="" /> : null}
-          </div>
-          <div className={styles.orgTitleContainer}>
-            {(this.state.org ? `Hệ thống quản lý khách sạn ${this.state.org.name}` : null)}
-          </div>
-        </div>
-        <div className={styles.homeContainer + " container-fluid"}>
-          {this.state.appArr.map((item, index) => {
-            return (
-              item.display && (
-                <a href={item.feUrl} key={index}>
-                  <div style={setStyle(item.bgImgUrl)}></div>
-                  <div>{item.nameAlt}</div>
-                </a>
-              )
-            );
-          })}
-        </div>
+
       </div>
     );
   }
