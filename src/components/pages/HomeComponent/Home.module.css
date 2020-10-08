@@ -18,10 +18,12 @@
 }
 
 .homeContainer {
+    position: relative;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    height: calc(100% - 400px);
 }
 .homeContainer > a {
     margin: 20px;
@@ -43,19 +45,6 @@
     margin-bottom: 10px;
     background-size: contain;
     transition: box-shadow 0.3s;
-}
-
-.homeContainer > a:nth-child(1) > div:nth-child(1) {
-    background-image: url("/manulife.jpg");
-}
-.homeContainer > a:nth-child(2) > div:nth-child(1) {
-    background-image: url("/mbal.jpg");
-}
-.homeContainer > a:nth-child(3) > div:nth-child(1) {
-    background-image: url("/fwd.jpg");
-}
-.homeContainer > a:nth-child(4) > div:nth-child(1) {
-    background-image: url("/hanwha.jpg");
 }
 
 .homeContainer > a:hover {

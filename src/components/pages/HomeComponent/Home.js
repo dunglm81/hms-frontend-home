@@ -116,7 +116,7 @@ class Home extends React.Component {
             {(this.state.org ? `Hệ thống quản lý khách sạn ${this.state.org.name}` : null)}
           </div>
         </div>
-        <div className={styles.homeContainer + " container"}>
+        <div className={styles.homeContainer + " container-fluid"}>
           {this.state.appArr.map((item, index) => {
             return (
               item.display && (
