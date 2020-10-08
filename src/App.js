@@ -53,7 +53,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
-        <div className="version-name">Phiên bản UAT</div>
+        {/* <div className="version-name">Phiên bản UAT</div> */}
       </div>
     );
   }
