@@ -27,7 +27,7 @@
             {
                 id: 3,
                 name: `pos`,
-                nameAlt: `POS`,
+                nameAlt: `Quản lý bán lẻ`,
                 display: false,
                 subDomain:"pos",
                 feUrl: '',
@@ -36,7 +36,7 @@
             {
                 id: 4,
                 name: `inventory`,
-                nameAlt: `INVENTORY`,
+                nameAlt: `Quản lý hàng tồn`,
                 display: false,
                 subDomain:"inventory",
                 feUrl: '',
@@ -45,7 +45,7 @@
             {
                 id: 5,
                 name: `equipment`,
-                nameAlt: `EQUIPMENT`,
+                nameAlt: `Quản lý thiết bị`,
                 display: false,
                 subDomain:"equipment",
                 feUrl: '',
@@ -54,7 +54,7 @@
             {
                 id: 6,
                 name: `hrm`,
-                nameAlt: `HRM`,
+                nameAlt: `Quản lý nhân sự`,
                 display: false,
                 subDomain:"hrm",
                 feUrl: '',
@@ -63,7 +63,7 @@
             {
                 id: 7,
                 name: `payroll`,
-                nameAlt: `PAYROLL`,
+                nameAlt: `Quản lý lương`,
                 display: false,
                 subDomain:"payroll",
                 feUrl: '',
@@ -72,7 +72,7 @@
             {
                 id: 8,
                 name: `timesheet`,
-                nameAlt: `TIMESHEET`,
+                nameAlt: `Quản lý chấm công`,
                 display: false,
                 subDomain:"timesheet",
                 feUrl: '',
@@ -81,7 +81,7 @@
             {
                 id: 9,
                 name: `crm`,
-                nameAlt: `CRM`,
+                nameAlt: `Quản lý khách hàng`,
                 display: false,
                 subDomain:"crm",
                 feUrl: '',
@@ -90,7 +90,7 @@
             {
                 id: 10,
                 name: `order`,
-                nameAlt: `ORDER`,
+                nameAlt: `Quản lý đơn hàng`,
                 display: false,
                 subDomain:"order",
                 feUrl: '',
@@ -99,7 +99,7 @@
             {
                 id: 11,
                 name: `vendor`,
-                nameAlt: `VENDOR`,
+                nameAlt: `Quản lý bán hàng`,
                 display: false,
                 subDomain:"vendor",
                 feUrl: '',
@@ -108,7 +108,7 @@
             {
                 id: 12,
                 name: `finance`,
-                nameAlt: `FINANCE`,
+                nameAlt: `Quản lý tài chính`,
                 display: false,
                 subDomain:"finance",
                 feUrl: '',
