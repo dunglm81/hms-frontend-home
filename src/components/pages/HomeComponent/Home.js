@@ -85,11 +85,6 @@ class Home extends React.Component {
   }
 
   render() {
-    const setStyle = (bgUrl) => {
-      return {
-        backgroundImage: `url(${bgUrl})`,
-      };
-    };
     return (
       <div className={styles.homeCustom} >
         <div className={"h-100 " + styles.containerCustom}>
@@ -114,7 +109,7 @@ class Home extends React.Component {
               {this.state.org ? <img src={this.state.org.logo} alt="" /> : null}
             </div>
             <div className={styles.orgTitleContainer}>
-              {(this.state.org ? `Hệ thống quản lý khách sạn ${this.state.org.name}` : null)}
+              {(this.state.org ? `Hệ thống quản lý ${this.state.org.name}` : null)}
             </div>
           </div>
           <div className={styles.homeContainer + " container-fluid"}>
@@ -122,7 +117,9 @@ class Home extends React.Component {
               return (
                 item.display && (
                   <a href={item.feUrl} key={index}>
-                    <div style={setStyle(item.bgImgUrl)}></div>
+                    <div className={styles.iconContainer}>
+                      <FontAwesomeIcon icon={item.iconName} className={styles.iconCustom} />
+                    </div>
                     <div>{item.nameAlt}</div>
                   </a>
                 )

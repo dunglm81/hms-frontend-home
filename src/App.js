@@ -1,5 +1,5 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCheck, faDownload, faEdit, faSignOutAlt, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faAddressBook, faCalendarAlt, faCheck, faDownload, faEdit, faHandHoldingUsd, faHotel, faLaptop, faPeopleCarry, faShippingFast, faSignOutAlt, faSpinner, faTools, faUserCog, faUserShield, faUserTag, faUserTie, faWarehouse } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
@@ -15,7 +15,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 
 
-library.add(faEdit, faDownload, faCheck, faSignOutAlt, faSpinner);
+library.add(faEdit, faDownload, faCheck, faSignOutAlt, faSpinner, faWarehouse, faUserShield, faHotel, faLaptop, faTools, faUserCog, faAddressBook, faCalendarAlt, faUserTag, faShippingFast, faPeopleCarry, faUserTie, faHandHoldingUsd);
 
 class App extends Component {
   constructor(props) {

@@ -24,7 +24,7 @@ export const ENVIRONMENT = () => {
   return env;
 };
 
-// export const BE_URL = ENVIRONMENT().beUrl;
+// export const BE_URL = `http://localhost:9001`;
 export const BE_URL = `http://${process.env.REACT_APP_SERVER_IP}/backend-admin`;
 
 export const LOGIN_URL = `authentication/user_login`;

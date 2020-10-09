@@ -9,20 +9,20 @@
             {
                 id: 1,
                 name: `Admin`,
-                nameAlt: `User Administration`,
+                nameAlt: `Quản lý người dùng`,
                 display: false,
                 subDomain:"admin",
                 feUrl: '',
-                bgImgUrl: "/admin.png"
+                iconName: "user-shield"
             },            
             {
                 id: 2,
                 name: `booking`,
-                nameAlt: `Booking`,
+                nameAlt: `Đặt phòng`,
                 display: false,
                 subDomain:"booking",
                 feUrl: '',
-                bgImgUrl: "/booking.png"
+                iconName: "hotel"
             },
             {
                 id: 3,
@@ -31,7 +31,7 @@
                 display: false,
                 subDomain:"pos",
                 feUrl: '',
-                bgImgUrl: "/pos.png"
+                iconName: "laptop"
             },
             {
                 id: 4,
@@ -40,7 +40,7 @@
                 display: false,
                 subDomain:"inventory",
                 feUrl: '',
-                bgImgUrl: "/inventory.png"
+                iconName: "warehouse"
             },
             {
                 id: 5,
@@ -49,7 +49,7 @@
                 display: false,
                 subDomain:"equipment",
                 feUrl: '',
-                bgImgUrl: "/equipment.png"
+                iconName: "tools"
             },
             {
                 id: 6,
@@ -58,7 +58,7 @@
                 display: false,
                 subDomain:"hrm",
                 feUrl: '',
-                bgImgUrl: "/hrm.png"
+                iconName: "user-cog"
             },
             {
                 id: 7,
@@ -67,7 +67,7 @@
                 display: false,
                 subDomain:"payroll",
                 feUrl: '',
-                bgImgUrl: "/payroll.png"
+                iconName: "address-book"
             },
             {
                 id: 8,
@@ -76,7 +76,7 @@
                 display: false,
                 subDomain:"timesheet",
                 feUrl: '',
-                bgImgUrl: "/timesheet.png"
+                iconName: "calendar-alt"
             },
             {
                 id: 9,
@@ -85,7 +85,7 @@
                 display: false,
                 subDomain:"crm",
                 feUrl: '',
-                bgImgUrl: "/crm.png"
+                iconName: "user-tag"
             },
             {
                 id: 10,
@@ -94,7 +94,7 @@
                 display: false,
                 subDomain:"order",
                 feUrl: '',
-                bgImgUrl: "/order.png"
+                iconName: "people-carry"
             },
             {
                 id: 11,
@@ -103,7 +103,7 @@
                 display: false,
                 subDomain:"vendor",
                 feUrl: '',
-                bgImgUrl: "/vendor.png"
+                iconName: "user-tie"
             },
             {
                 id: 12,
@@ -112,7 +112,7 @@
                 display: false,
                 subDomain:"finance",
                 feUrl: '',
-                bgImgUrl: "/finance.png"
+                iconName: "hand-holding-usd"
             }
         ];
     }
