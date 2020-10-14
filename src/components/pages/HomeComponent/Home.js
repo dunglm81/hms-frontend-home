@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import apiService from '../../../services/api.service';
 import authService from "../../../services/auth.service";
-import { ADMIN, ENVIRONMENT } from "../../../utils/constant";
+import { ADMIN, ENVIRONMENT, OUR_LOGO } from "../../../utils/constant";
 import styles from "./Home.module.css";
 
 class Home extends React.Component {
@@ -13,7 +13,8 @@ class Home extends React.Component {
       user: authService.getUser(),
       userLogo: authService.getUserLogo(),
       org: authService.getOrg(),
-      orgCode: authService.getOrgCode()
+      orgCode: authService.getOrgCode(),
+      ourLogo: OUR_LOGO
     };
   }
 
@@ -89,24 +90,34 @@ class Home extends React.Component {
       <div className={styles.homeCustom} >
         <div className={"h-100 " + styles.containerCustom}>
           <div className={styles.navbarCustom}>
-            <div className={styles.navbarInfo}>
-              <div className={styles.navbarAvartar}>
-                <img src={this.state.userLogo} alt="avartar"></img>
+            <div className={styles.navbarCustomContainer}>
+              <div className={styles.navbarInfo}>
+                <div className={styles.navbarAvartar}>
+                  <img src={this.state.userLogo} alt="avartar"></img>
+                </div>
+                <div className={styles.navbarName}>
+                  {this.state.user.unique_name}
+                </div>
               </div>
-              <div className={styles.navbarName}>
-                {this.state.user.unique_name}
+              <div className={styles.ourInfo}>
+                <div className={styles.ourLogo}>
+                  <img src={this.state.ourLogo} alt=""></img>
+                </div>
+                <div className={styles.ourName}>
+                  <div>Vietnam</div><div>Manufacturing</div><div>Transformation</div>  
+                </div>
               </div>
-            </div>
-            <div className={styles.navbarBtn} onClick={() => {
-              this.handleLogoutEvent();
-            }}>
-              <div><FontAwesomeIcon icon="sign-out-alt" /></div>
-              <div>Log out</div>
+              <div className={styles.navbarBtn} onClick={() => {
+                this.handleLogoutEvent();
+              }}>
+                <div><FontAwesomeIcon icon="sign-out-alt" /></div>
+                <div>Log out</div>
+              </div>
             </div>
           </div>
           <div className={styles.orgContainer}>
             <div className={styles.orgLogoContainer}>
-              {this.state.org ? <img src={this.state.org.logo} alt="" /> : null}
+              {/* {this.state.org ? <img src={this.state.org.logo} alt="" /> : null} */}
             </div>
             <div className={styles.orgTitleContainer}>
               {(this.state.org ? `Hệ thống quản lý ${this.state.org.name}` : null)}
