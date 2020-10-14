@@ -34,6 +34,7 @@ export const REFRESH_TOKEN_TIME = ENVIRONMENT().refreshTokenTime;
 export const ADMIN = `Admin`;
 
 export const OUR_LOGO = ENVIRONMENT().ourLogo;
+export const DATA_CONNECTION_LOGO = ENVIRONMENT().dataConnectionLogo;
 
 export const HMS_ACCESS_TOKEN = `hms-access-token`;
 export const HMS_USER = `hms-user`;

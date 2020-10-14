@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import apiService from '../../../services/api.service';
 import authService from "../../../services/auth.service";
-import { ADMIN, ENVIRONMENT, OUR_LOGO } from "../../../utils/constant";
+import { ADMIN, DATA_CONNECTION_LOGO, ENVIRONMENT, OUR_LOGO } from "../../../utils/constant";
 import styles from "./Home.module.css";
 
 class Home extends React.Component {
@@ -14,7 +14,8 @@ class Home extends React.Component {
       userLogo: authService.getUserLogo(),
       org: authService.getOrg(),
       orgCode: authService.getOrgCode(),
-      ourLogo: OUR_LOGO
+      ourLogo: OUR_LOGO,
+      dataConnectionLogo: DATA_CONNECTION_LOGO
     };
   }
 
@@ -115,12 +116,17 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
+          <div className={styles.dataConnectionContainer}>
+            <div className={styles.dataConnectionLogo}>
+              <img src={this.state.dataConnectionLogo} alt=""></img>
+            </div>
+          </div>
           <div className={styles.orgContainer}>
             <div className={styles.orgLogoContainer}>
-              {/* {this.state.org ? <img src={this.state.org.logo} alt="" /> : null} */}
+              {/* {this.state.org ? <img src={this.state.dataConnectionLogo} alt="" /> : null} */}
             </div>
             <div className={styles.orgTitleContainer}>
-              {(this.state.org ? `Hệ thống quản lý ${this.state.org.name}` : null)}
+              {(this.state.org ? `Tên đơn vị: ${this.state.org.name}` : null)}
             </div>
           </div>
           <div className={styles.homeContainer + " container-fluid"}>

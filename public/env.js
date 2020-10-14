@@ -4,7 +4,8 @@
         window.__env.beUrl = `http://localhost/backend-admin`;
         window.__env.baseDomain = `http://localhost`;
         window.__env.enableDebug = true;
-        window.__env.ourLogo = `/vmt.png`
+        window.__env.ourLogo = `/vmt.png`;
+        window.__env.dataConnectionLogo = `/data_connection.png`;
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
             {
