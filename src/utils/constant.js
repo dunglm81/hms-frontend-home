@@ -18,6 +18,7 @@ export const ENVIRONMENT = () => {
 
   env.appArr.map(item => {
     item.feUrl = `http://${process.env.REACT_APP_SERVER_IP}/${item.subDomain}`;
+    // item.feUrl = `http://localhost:9000/${item.subDomain}`;
     return item;
   });
 

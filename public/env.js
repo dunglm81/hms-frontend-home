@@ -7,6 +7,15 @@
         window.__env.refreshTokenTime = 5; //minutes
         window.__env.appArr = [
             {
+                id: 0,
+                name: `vmt`,
+                nameAlt: `Vietnam Manufacturing Transformation`,
+                display: false,
+                subDomain:"vmt",
+                feUrl: '',
+                iconUrl: "/cmc.png"
+            },
+            {
                 id: 1,
                 name: `Admin`,
                 nameAlt: `Quản lý người dùng`,

@@ -117,10 +117,14 @@ class Home extends React.Component {
               return (
                 item.display && (
                   <a href={item.feUrl} key={index}>
-                    <div className={styles.iconContainer}>
-                      <FontAwesomeIcon icon={item.iconName} className={styles.iconCustom} />
+                    <div className={styles.iconContainer + " " + (item.iconUrl ? styles.iconContainerCustom : "")}>
+                      {item.iconUrl ?
+                        <img src={item.iconUrl} alt=""></img>
+                        :
+                        <FontAwesomeIcon icon={item.iconName} className={styles.iconCustom} />
+                      }
                     </div>
-                    <div>{item.nameAlt}</div>
+                    <div className={styles.nameAltContainer + " " + (item.iconUrl ? styles.nameAltContainerCustom : "")}>{item.nameAlt}</div>
                   </a>
                 )
               );
