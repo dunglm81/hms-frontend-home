@@ -1,5 +1,6 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faAddressBook, faCalendarAlt, faCheck, faDownload, faEdit, faHandHoldingUsd, faHotel, faLaptop, faPeopleCarry, faShippingFast, faSignOutAlt, faSpinner, faTools, faUserCog, faUserShield, faUserTag, faUserTie, faWarehouse } from "@fortawesome/free-solid-svg-icons";
+import queryString from 'query-string';
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
@@ -14,7 +15,6 @@ import authService from "./services/auth.service";
 import PrivateRoute from "./utils/PrivateRoute";
 
 
-
 library.add(faEdit, faDownload, faCheck, faSignOutAlt, faSpinner, faWarehouse, faUserShield, faHotel, faLaptop, faTools, faUserCog, faAddressBook, faCalendarAlt, faUserTag, faShippingFast, faPeopleCarry, faUserTie, faHandHoldingUsd);
 
 class App extends Component {
@@ -25,6 +25,13 @@ class App extends Component {
       user: authService.getUser(),
       isExpire: authService.isExpire()
     };
+  }
+
+  componentDidMount() {
+    const params = queryString.parse(window.location.search);
+    if (params.state && params.state === "logout") {
+      authService.logout();
+    }
   }
 
   render() {
