@@ -146,13 +146,14 @@ class AuthService {
   }
 
   logout() {
+    console.log("TVT go to logout function");
     localStorage.removeItem(HMS_ACCESS_TOKEN);
     localStorage.removeItem(HMS_USER);
     localStorage.removeItem(HMS_EXPIRE);
     localStorage.removeItem(HMS_USER_LOGO);
     localStorage.removeItem(HMS_ORG);
     localStorage.removeItem(HMS_ORG_CODE);
-    window.location.href = `/login`;
+    // window.location.href = `/login`;
   }
 }
 
