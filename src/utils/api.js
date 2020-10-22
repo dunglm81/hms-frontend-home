@@ -20,7 +20,7 @@ api_instance.interceptors.request.use(
       }
     } else if (config.url !== LOGIN_URL) {
       console.log("TVT configUrl = " + config.url);
-      authService.logout();
+      // authService.logout();
     }
 
     return config;
