@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import apiService from '../../../services/api.service';
 import authService from "../../../services/auth.service";
-import { ADMIN, DATA_CONNECTION_LOGO, ENVIRONMENT, OUR_LOGO } from "../../../utils/constant";
+import { DATA_CONNECTION_LOGO, ENVIRONMENT, OUR_LOGO } from "../../../utils/constant";
 import styles from "./Home.module.css";
 
 class Home extends React.Component {
@@ -21,14 +21,9 @@ class Home extends React.Component {
 
   componentDidMount() {
     if (this.state.user) {
-      if (this.state.orgCode) {
-        this.setupAppArr(this.state.orgCode);
-      } else {
-        this.getOrgFromServer(this.state.user.orgId).then((orgCode) => {
-          this.setupAppArr(orgCode);
-        }).catch(e => {
-          console.log(e);
-        })
+      this.setupAppArr();
+      if (!this.state.orgCode) {
+        this.getOrgFromServer(this.state.user.orgId);
       }
     } else {
       authService.logout();
@@ -36,37 +31,26 @@ class Home extends React.Component {
   }
 
   getOrgFromServer(orgId) {
-    return new Promise((resolve, reject) => {
-      if (orgId && parseInt(orgId) !== -1) {
-        apiService.getOrgInfo(orgId).then((response) => {
-          if (response.status === 200 && response.data) {
-            authService.setOrgCode(response.data.code);
-            authService.setOrg(response.data);
-            this.setState({
-              org: response.data,
-              orgCode: response.data.code
-            });
-            resolve(response.data.code);
-          } else {
-            reject();
-          }
-        }).catch((err) => {
-          console.log(err);
-          reject();
-        })
-      } else {
-        resolve();
-      }
-    })
+    if (orgId && parseInt(orgId) !== -1) {
+      apiService.getOrgInfo(orgId).then((response) => {
+        if (response.status === 200 && response.data) {
+          authService.setOrgCode(response.data.code);
+          authService.setOrg(response.data);
+          this.setState({
+            org: response.data,
+            orgCode: response.data.code
+          });
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
   }
 
-  setupAppArr(orgCode) {
+  setupAppArr() {
     const userRoles = authService.getUser().role;
     let appArr = JSON.parse(JSON.stringify(this.state.appArr));
     appArr = appArr.map((item) => {
-      if (item.name !== ADMIN && orgCode) {
-        item.name = `${orgCode}_${item.name}`;
-      }
       const regex = new RegExp("^" + item.name);
       if (typeof userRoles === 'string') {
         item.display = regex.test(userRoles);
@@ -105,7 +89,7 @@ class Home extends React.Component {
                   <img src={this.state.ourLogo} alt=""></img>
                 </div>
                 <div className={styles.ourName}>
-                  <div>Vietnam</div><div>Manufacturing</div><div>Transformation</div>  
+                  <div>Vietnam</div><div>Manufacturing</div><div>Transformation</div>
                 </div>
               </div>
               <div className={styles.navbarBtn} onClick={() => {
@@ -122,9 +106,6 @@ class Home extends React.Component {
             </div>
           </div>
           <div className={styles.orgContainer}>
-            <div className={styles.orgLogoContainer}>
-              {/* {this.state.org ? <img src={this.state.dataConnectionLogo} alt="" /> : null} */}
-            </div>
             <div className={styles.orgTitleContainer}>
               {(this.state.org ? `Tên đơn vị: ${this.state.org.name}` : null)}
             </div>

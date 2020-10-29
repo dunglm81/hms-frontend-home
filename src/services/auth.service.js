@@ -5,9 +5,8 @@ import {
   HMS_EXPIRE,
   HMS_ORG,
   HMS_ORG_CODE, HMS_USER,
-  HMS_USER_LOGO, REFRESH_TOKEN_URL, REFRESH_TOKEN_TIME
+  HMS_USER_LOGO, REFRESH_TOKEN_TIME, REFRESH_TOKEN_URL
 } from "../utils/constant";
-import { logFn } from "../utils/util";
 
 class AuthService {
   getAccessToken() {
@@ -26,7 +25,6 @@ class AuthService {
     if (token) {
       const payload = token.split(".")[1];
       const userStr = this.convertStr(Base64.decode(payload).toString());
-      logFn("userStr", userStr);
       const userStrArr = userStr.split(",");
       const idx = userStrArr.findIndex((item) => item.includes('"exp":'));
       if (idx !== -1) {
@@ -63,8 +61,7 @@ class AuthService {
 
   printError = function (error, explicit) {
     console.log(
-      `[${explicit ? "EXPLICIT" : "INEXPLICIT"}] ${error.name}: ${
-      error.message
+      `[${explicit ? "EXPLICIT" : "INEXPLICIT"}] ${error.name}: ${error.message
       }`
     );
   };
@@ -92,7 +89,7 @@ class AuthService {
   }
 
   setOrgCode(orgCode) {
-    if(orgCode) {
+    if (orgCode) {
       localStorage.setItem(HMS_ORG_CODE, orgCode);
     }
   }
@@ -146,14 +143,13 @@ class AuthService {
   }
 
   logout() {
-    console.log("TVT go to logout function");
     localStorage.removeItem(HMS_ACCESS_TOKEN);
     localStorage.removeItem(HMS_USER);
     localStorage.removeItem(HMS_EXPIRE);
     localStorage.removeItem(HMS_USER_LOGO);
     localStorage.removeItem(HMS_ORG);
     localStorage.removeItem(HMS_ORG_CODE);
-    // window.location.href = `/login`;
+    window.location.href = `/login`;
   }
 }
 

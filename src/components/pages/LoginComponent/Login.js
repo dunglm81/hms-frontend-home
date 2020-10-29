@@ -3,7 +3,6 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import authService from "../../../services/auth.service";
 import { LOGIN_URL } from "../../../utils/constant";
-import { logFn } from "../../../utils/util";
 import styles from "./Login.module.css";
 
 class Login extends React.Component {
