@@ -21,8 +21,10 @@ class Home extends React.Component {
 
   componentDidMount() {
     if (this.state.user) {
-      this.setupAppArr();
-      if (!this.state.orgCode) {
+
+      if (this.state.orgCode) {
+        this.setupAppArr();
+      } else {
         this.getOrgFromServer(this.state.user.orgId);
       }
     } else {
@@ -40,6 +42,7 @@ class Home extends React.Component {
             org: response.data,
             orgCode: response.data.code
           });
+          this.setupAppArr();
         }
       }).catch((err) => {
         console.log(err);
@@ -48,22 +51,36 @@ class Home extends React.Component {
   }
 
   setupAppArr() {
-    const userRoles = authService.getUser().role;
-    let appArr = JSON.parse(JSON.stringify(this.state.appArr));
-    appArr = appArr.map((item) => {
-      const regex = new RegExp("^" + item.name);
-      if (typeof userRoles === 'string') {
-        item.display = regex.test(userRoles);
-      } else {
-        item.display = userRoles.some(item1 => {
-          return regex.test(item1);
+    if (this.state.user) {
+      const userRoles = this.state.user.role;
+      if (userRoles) {
+        let appArr = JSON.parse(JSON.stringify(this.state.appArr));
+        appArr = appArr.map((item) => {
+          const regex = new RegExp("^" + item.name);
+          if (typeof userRoles === 'string') {
+            item.display = regex.test(userRoles);
+          } else {
+            item.display = userRoles.some(item1 => {
+              return regex.test(item1);
+            });
+          }
+          return item;
         });
+        this.setState({
+          appArr: appArr
+        });
+        
+        // Check auto access to one app
+        if(typeof userRoles === 'string') {
+          const idx = appArr.findIndex(item => item.name === userRoles);
+          if(idx !== -1) {
+            setTimeout(() => {
+              window.location.href = appArr[idx].feUrl;
+            }, 1000);
+          }
+        }
       }
-      return item;
-    });
-    this.setState({
-      appArr: appArr
-    });
+    }
   }
 
   handleLogoutEvent() {
