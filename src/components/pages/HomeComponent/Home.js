@@ -15,7 +15,7 @@ class Home extends React.Component {
       org: authService.getOrg(),
       orgCode: authService.getOrgCode(),
       ourLogo: OUR_LOGO,
-      dataConnectionLogo: DATA_CONNECTION_LOGO
+      dataConnectionLogo: DATA_CONNECTION_LOGO,
     };
   }
 
@@ -69,11 +69,11 @@ class Home extends React.Component {
         this.setState({
           appArr: appArr
         });
-        
+
         // Check auto access to one app
-        if(typeof userRoles === 'string') {
+        if (typeof userRoles === 'string') {
           const idx = appArr.findIndex(item => item.name === userRoles);
-          if(idx !== -1) {
+          if (idx !== -1) {
             setTimeout(() => {
               window.location.href = appArr[idx].feUrl;
             }, 1000);
@@ -94,11 +94,17 @@ class Home extends React.Component {
           <div className={styles.navbarCustom}>
             <div className={styles.navbarCustomContainer}>
               <div className={styles.navbarInfo}>
-                <div className={styles.navbarAvartar}>
-                  <img src={this.state.userLogo} alt="avartar"></img>
-                </div>
                 <div className={styles.navbarName}>
                   {this.state.user.unique_name}
+                </div>
+                <div className={styles.navbarAvartar}>
+                  <img src={this.state.userLogo} alt="avartar" data-toggle="dropdown"></img>
+                  <ul className={"dropdown-menu " + styles.dropdownMenuCustom}>
+                    <li>Change Password</li>
+                    <li onClick={(e) => {
+                      this.handleLogoutEvent();
+                    }}>Logout</li>
+                  </ul>
                 </div>
               </div>
               <div className={styles.ourInfo}>
@@ -108,12 +114,6 @@ class Home extends React.Component {
                 <div className={styles.ourName}>
                   <div>Vietnam</div><div>Manufacturing</div><div>Transformation</div>
                 </div>
-              </div>
-              <div className={styles.navbarBtn} onClick={() => {
-                this.handleLogoutEvent();
-              }}>
-                <div><FontAwesomeIcon icon="sign-out-alt" /></div>
-                <div>Log out</div>
               </div>
             </div>
           </div>
