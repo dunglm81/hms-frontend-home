@@ -9,8 +9,9 @@ import {
   Switch
 } from "react-router-dom";
 import "./App.css";
+import ChangePasswordComponent from "./components/pages/AuthComponent/ChangePassword";
+import Login from "./components/pages/AuthComponent/Login";
 import Home from "./components/pages/HomeComponent/Home";
-import Login from "./components/pages/LoginComponent/Login";
 import authService from "./services/auth.service";
 import PrivateRoute from "./utils/PrivateRoute";
 
@@ -57,10 +58,10 @@ class App extends Component {
                 }
               />
               <PrivateRoute exact path="/home" component={Home} />
+              <PrivateRoute exact path="/change_password" component={ChangePasswordComponent} />
             </Switch>
           </div>
         </Router>
-        {/* <div className="version-name">Phiên bản UAT</div> */}
       </div>
     );
   }

@@ -44,3 +44,5 @@ export const HMS_ORG = `hms-org`;
 export const HMS_ORG_CODE = `hms-org-code`;
 
 export const API_ORG = `/org`;
+
+export const URL_CHANGE_PASSWORD = `/change_password`;

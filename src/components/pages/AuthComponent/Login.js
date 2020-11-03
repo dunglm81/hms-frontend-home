@@ -3,15 +3,15 @@ import React from "react";
 import { Button, Form } from "react-bootstrap";
 import authService from "../../../services/auth.service";
 import { LOGIN_URL } from "../../../utils/constant";
-import styles from "./Login.module.css";
+import styles from "./Auth.module.css";
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "demo_user@gmail.com",
-      password: "12345678",
-      isValidDate: true,
+      username: "trinhvutung87@gmail.com",
+      password: "123456",
+      isValidate: true,
       isSubmitting: false
     };
   }
@@ -21,9 +21,9 @@ class Login extends React.Component {
   }
 
   checkValidation() {
-    let isValidDate = true;
-    this.updateState("isValidDate", isValidDate);
-    return isValidDate;
+    let isValidate = true;
+    this.updateState("isValidate", isValidate);
+    return isValidate;
   }
 
   updateState(key, value) {

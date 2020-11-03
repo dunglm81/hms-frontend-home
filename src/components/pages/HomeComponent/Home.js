@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import apiService from '../../../services/api.service';
 import authService from "../../../services/auth.service";
-import { DATA_CONNECTION_LOGO, ENVIRONMENT, OUR_LOGO } from "../../../utils/constant";
+import { DATA_CONNECTION_LOGO, ENVIRONMENT, OUR_LOGO, URL_CHANGE_PASSWORD } from "../../../utils/constant";
 import styles from "./Home.module.css";
 
 class Home extends React.Component {
@@ -87,6 +87,10 @@ class Home extends React.Component {
     authService.logout();
   }
 
+  routeToChangePasswordPage() {
+    window.location.href = URL_CHANGE_PASSWORD;
+  }
+
   render() {
     return (
       <div className={styles.homeCustom} >
@@ -100,7 +104,9 @@ class Home extends React.Component {
                 <div className={styles.navbarAvartar}>
                   <img src={this.state.userLogo} alt="avartar" data-toggle="dropdown"></img>
                   <ul className={"dropdown-menu " + styles.dropdownMenuCustom}>
-                    <li>Change Password</li>
+                    <li onClick={() => {
+                      this.routeToChangePasswordPage();
+                    }}>Change Password</li>
                     <li onClick={(e) => {
                       this.handleLogoutEvent();
                     }}>Logout</li>
