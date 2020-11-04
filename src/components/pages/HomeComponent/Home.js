@@ -109,7 +109,7 @@ class Home extends React.Component {
                     }}>Change Password</li>
                     <li onClick={(e) => {
                       this.handleLogoutEvent();
-                    }}>Logout</li>
+                    }}>Log out</li>
                   </ul>
                 </div>
               </div>
@@ -128,7 +128,7 @@ class Home extends React.Component {
               <img src={this.state.dataConnectionLogo} alt=""></img>
             </div>
           </div>
-          <div className={styles.orgContainer}>
+          <div className={styles.orgContainer}> 
             <div className={styles.orgTitleContainer}>
               {(this.state.org ? `Tên đơn vị: ${this.state.org.name}` : null)}
             </div>

@@ -28,7 +28,8 @@ export const ENVIRONMENT = () => {
 // export const BE_URL = `http://localhost:1080`;
 export const BE_URL = `http://${process.env.REACT_APP_SERVER_IP}/backend-admin`;
 
-export const LOGIN_URL = `authentication/user_login`;
+export const API_LOGIN = `authentication/user_login`;
+export const API_CHANGE_PASSWORD = `authentication/user_change_password`;
 export const REFRESH_TOKEN_URL = `authentication/renew_jwt`;
 export const REFRESH_TOKEN_TIME = ENVIRONMENT().refreshTokenTime;
 export const ADMIN = `Admin`;

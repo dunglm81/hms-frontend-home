@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import authService from "../../../services/auth.service";
-import { LOGIN_URL } from "../../../utils/constant";
+import { API_LOGIN } from "../../../utils/constant";
 import styles from "./Auth.module.css";
 
 class Login extends React.Component {
@@ -41,7 +41,7 @@ class Login extends React.Component {
     };
 
     authService
-      .login(LOGIN_URL, body)
+      .login(API_LOGIN, body)
       .then((response) => {
         if (response.status === 200) {
           this.updateState("isSubmitting", false);

@@ -17,10 +17,8 @@
 .errorInput {
     border: 1px solid red !important;
 }
+
 .errorMessage {
-    position: absolute;
-    top: 40px;
-    left: 110px;
     font-size: 12px;
     font-style: italic;
     color: red;

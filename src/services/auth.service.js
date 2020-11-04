@@ -1,6 +1,7 @@
 import api_instance from "../utils/api";
 import Base64 from "../utils/Base64";
 import {
+  API_CHANGE_PASSWORD,
   HMS_ACCESS_TOKEN,
   HMS_EXPIRE,
   HMS_ORG,
@@ -140,6 +141,10 @@ class AuthService {
 
   login(loginUrl, body) {
     return api_instance.post(loginUrl, body);
+  }
+
+  changePassword(body) {
+    return api_instance.post(API_CHANGE_PASSWORD, body);
   }
 
   logout() {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import authService from "../services/auth.service";
-import { BE_URL, LOGIN_URL, REFRESH_TOKEN_URL } from "./constant";
+import { BE_URL, API_LOGIN, REFRESH_TOKEN_URL } from "./constant";
 
 
 const api_instance = axios.create({
@@ -18,7 +18,7 @@ api_instance.interceptors.request.use(
       if (isRefresh && config.url !== REFRESH_TOKEN_URL) {
         authService.getRefreshToken();
       }
-    } else if (config.url !== LOGIN_URL) {
+    } else if (config.url !== API_LOGIN) {
       authService.logout();
     }
 
