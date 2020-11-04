@@ -8,21 +8,21 @@ import styles from "./Auth.module.css";
 const initSubmitObj = [
     {
         key: "current_password",
-        keyAlt: "Current Password",
+        keyAlt: "Mật khẩu hiện tại",
         value: "",
         errorMessage: "",
         isCheck: false
     },
     {
         key: "new_password",
-        keyAlt: "New Password",
+        keyAlt: "Mật khẩu mới",
         value: "",
         errorMessage: "",
         isCheck: false
     },
     {
         key: "confirm_new_password",
-        keyAlt: "Confirm New Password",
+        keyAlt: "Xác nhận mật khẩu mới",
         value: "",
         errorMessage: "",
         isCheck: false
@@ -32,6 +32,8 @@ const initSubmitObj = [
 const ChangePasswordComponent = () => {
     const [submitObj, setSubmitObj] = useState(initSubmitObj);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     const handleChangeInput = (event) => {
         const name = event.target.name;
@@ -61,14 +63,24 @@ const ChangePasswordComponent = () => {
         if (checkValidation()) {
             setIsSubmitting(true);
             const obj = {
-                id: authService.getUser().userId,
-                data: submitObj
+                CurrentPassword: submitObj[0].value,
+                NewPassword: submitObj[1].value,
+                ConfirmNewPassword: submitObj[2].value
             }
-            authService.changePassword(obj).then(response => {
+            authService.changePassword(obj, authService.getUser().userId).then(response => {
                 if (response.status === 200) {
-
+                    authService.cleanLocalStorage();
+                    setIsSuccess(true);
+                    setIsError(false);
+                } else {
+                    setIsSuccess(false);
+                    setIsError(true);
                 }
+                setIsSubmitting(false);
             }).catch(err => {
+                setIsSuccess(false);
+                setIsError(true);
+                setIsSubmitting(false);
                 console.log(err);
             })
         }
@@ -131,7 +143,15 @@ const ChangePasswordComponent = () => {
     }
 
     return (
-        <div className={styles.formCustom}>
+        <div className={styles.formCustomOne}>
+            <div className="d-flex flex-column align-items-center justify-content-center mb-2">
+                {isError ? <div className={styles.errorAlert}>
+                    Thay đổi mật khẩu không thành công. Vui lòng thử lại!
+                </div> : null}
+                {isSuccess ? <div className={styles.successAlert}>
+                    Bạn đã đổi mật khẩu thành công. Vui lòng đăng nhập lại <a href="/login">Tại đây</a>
+                </div> : null}
+            </div>
             <div className={styles.formContainer}>
                 <Form
                     onSubmit={(e) => {
@@ -163,7 +183,7 @@ const ChangePasswordComponent = () => {
                     }
 
                     <Button variant="primary" type="submit">
-                        Submit
+                        Cập nhật
                 {isSubmitting ? <FontAwesomeIcon className="ml-2" icon="spinner" pulse /> : null}
                     </Button>
                 </Form>
