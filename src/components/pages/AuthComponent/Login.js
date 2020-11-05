@@ -9,7 +9,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "demo_user@gmail.com",
+      username: "trinhvutung87@gmail.com",
       password: "12345678",
       isValidate: true,
       isSubmitting: false
