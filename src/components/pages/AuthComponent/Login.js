@@ -9,7 +9,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "trinhvutung00000000@gmail.com",
+      username: "demo_user@gmail.com",
       password: "12345678",
       isValidate: true,
       isSubmitting: false
@@ -47,7 +47,7 @@ class Login extends React.Component {
           this.updateState("isSubmitting", false);
           authService.setAccessToken(response.data.token);
           authService.setUserLogo(response.data.avartar);
-          this.props.history.push("/home");
+          // this.props.history.push("/home");
         }
       })
       .catch((err) => {
