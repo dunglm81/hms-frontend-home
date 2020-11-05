@@ -26,6 +26,7 @@ class AuthService {
     if (token) {
       const payload = token.split(".")[1];
       const userStr = this.convertStr(Base64.decode(payload).toString());
+      console.log("TVT userStr = " + userStr);
       const userStrArr = userStr.split(",");
       const idx = userStrArr.findIndex((item) => item.includes('"exp":'));
       if (idx !== -1) {
