@@ -20,8 +20,9 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    console.log("TVT go to componentDidMountFn, this.state.user = " + JSON.stringify(this.state.user));
     if (this.state.user) {
-
+      console.log("TVT this.state.orgCode = " + this.state.orgCode);
       if (this.state.orgCode) {
         this.setupAppArr();
       } else {
@@ -35,6 +36,7 @@ class Home extends React.Component {
   getOrgFromServer(orgId) {
     if (orgId && parseInt(orgId) !== -1) {
       apiService.getOrgInfo(orgId).then((response) => {
+        console.log("TVT getOrgInfo, response = " + JSON.stringify(response));
         if (response.status === 200 && response.data) {
           authService.setOrgCode(response.data.code);
           authService.setOrg(response.data);

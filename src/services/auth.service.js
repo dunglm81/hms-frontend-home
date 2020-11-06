@@ -71,8 +71,10 @@ class AuthService {
   getUser() {
     let user = null;
     let userStr = localStorage.getItem(HMS_USER);
+    console.log("TVT userStr in getUserFn = " + userStr);
     try {
       user = JSON.parse(userStr);
+      console.log("TVT user in parseFn = " + JSON.stringify(user));
     } catch (error) {
       if (error instanceof SyntaxError) {
         this.printError(error, true);
