@@ -55,6 +55,7 @@ class Home extends React.Component {
       const userRoles = this.state.user.role;
       if (userRoles) {
         let appArr = JSON.parse(JSON.stringify(this.state.appArr));
+        console.log("TVT appArr 1 = " + JSON.stringify(appArr));
         appArr = appArr.map((item) => {
           const regex = new RegExp("^" + item.name);
           if (typeof userRoles === 'string') {
@@ -66,6 +67,7 @@ class Home extends React.Component {
           }
           return item;
         });
+        console.log("TVT appArr 2 = " + JSON.stringify(appArr));
         this.setState({
           appArr: appArr
         });
