@@ -53,6 +53,7 @@ class Home extends React.Component {
   setupAppArr() {
     if (this.state.user) {
       const userRoles = this.state.user.role;
+      console.log("TVT userRoles = " + JSON.stringify(userRoles));
       if (userRoles) {
         let appArr = JSON.parse(JSON.stringify(this.state.appArr));
         console.log("TVT appArr 1 = " + JSON.stringify(appArr));
