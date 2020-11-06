@@ -20,9 +20,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log("TVT go to componentDidMountFn, this.state.user = " + JSON.stringify(this.state.user));
     if (this.state.user) {
-      console.log("TVT this.state.orgCode = " + this.state.orgCode);
       if (this.state.orgCode) {
         this.setupAppArr();
       } else {
@@ -36,7 +34,6 @@ class Home extends React.Component {
   getOrgFromServer(orgId) {
     if (orgId && parseInt(orgId) !== -1) {
       apiService.getOrgInfo(orgId).then((response) => {
-        console.log("TVT getOrgInfo, response = " + JSON.stringify(response));
         if (response.status === 200 && response.data) {
           authService.setOrgCode(response.data.code);
           authService.setOrg(response.data);
@@ -55,10 +52,8 @@ class Home extends React.Component {
   setupAppArr() {
     if (this.state.user) {
       const userRoles = this.state.user.role;
-      console.log("TVT userRoles = " + JSON.stringify(userRoles));
       if (userRoles) {
         let appArr = JSON.parse(JSON.stringify(this.state.appArr));
-        console.log("TVT appArr 1 = " + JSON.stringify(appArr));
         appArr = appArr.map((item) => {
           const regex = new RegExp("^" + item.name);
           if (typeof userRoles === 'string') {
@@ -70,7 +65,6 @@ class Home extends React.Component {
           }
           return item;
         });
-        console.log("TVT appArr 2 = " + JSON.stringify(appArr));
         this.setState({
           appArr: appArr
         });
@@ -133,7 +127,7 @@ class Home extends React.Component {
               <img src={this.state.dataConnectionLogo} alt=""></img>
             </div>
           </div>
-          <div className={styles.orgContainer}> 
+          <div className={styles.orgContainer}>
             <div className={styles.orgTitleContainer}>
               {(this.state.org ? `Tên đơn vị: ${this.state.org.name}` : null)}
             </div>

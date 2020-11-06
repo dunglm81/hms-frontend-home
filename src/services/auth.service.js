@@ -26,7 +26,6 @@ class AuthService {
     if (token) {
       const payload = token.split(".")[1];
       const userStr = this.convertStr(Base64.decode(payload).toString());
-      console.log("TVT userStr = " + userStr);
       const userStrArr = userStr.split(",");
       const idx = userStrArr.findIndex((item) => item.includes('"exp":'));
       if (idx !== -1) {
@@ -71,10 +70,8 @@ class AuthService {
   getUser() {
     let user = null;
     let userStr = localStorage.getItem(HMS_USER);
-    console.log("TVT userStr in getUserFn = " + userStr);
     try {
       user = JSON.parse(userStr);
-      console.log("TVT user in parseFn = " + JSON.stringify(user));
     } catch (error) {
       if (error instanceof SyntaxError) {
         this.printError(error, true);
