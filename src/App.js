@@ -29,6 +29,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if(!this.state.user || this.state.isExpire) {
+      authService.logout();
+    }
     const params = queryString.parse(window.location.search);
     if (params.state && params.state === "logout") {
       authService.logout();
