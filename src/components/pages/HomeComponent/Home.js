@@ -20,14 +20,13 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.user) {
-      if (this.state.orgCode) {
-        this.setupAppArr();
-      } else {
-        this.getOrgFromServer(this.state.user.orgId);
-      }
-    } else {
+    if (!this.state.user || authService.isExpire) {
       authService.logout();
+    }
+    if (this.state.orgCode) {
+      this.setupAppArr();
+    } else {
+      this.getOrgFromServer(this.state.user.orgId);
     }
   }
 
