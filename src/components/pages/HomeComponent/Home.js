@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.state.user || authService.isExpire) {
+    if (!this.state.user || authService.isExpire()) {
       authService.logout();
     }
     if (this.state.orgCode) {
